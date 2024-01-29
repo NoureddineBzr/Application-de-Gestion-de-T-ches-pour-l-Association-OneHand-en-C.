@@ -80,3 +80,33 @@ void AfficherListeTaches() {
     }
 }
 
+
+
+
+
+void ModifierTache() {
+    if (countTaches > 0) {
+        int numeroTache;
+        printf("Donner le numero de la tache a modifier: ");
+        scanf("%d", &numeroTache);
+        if (numeroTache > 0 && numeroTache <= countTaches) {
+            Tache *modifierTache = &ListeTaches[numeroTache - 1];
+
+            printf("Entrez la nouvelle description de la tache : ");
+            scanf(" %[^\n]s", modifierTache->Description);
+
+            printf("Entrez la nouvelle date de la tache (Format: jour-mois-annee) : ");
+            scanf("%d-%d-%d", &modifierTache->Date.jours, &modifierTache->Date.mois, &modifierTache->Date.annee);
+
+            printf("Entrez la nouvelle prioritee de la tache (0: Faible, 1: Normale, 2: Importante, 3: TresImportante) : ");
+            scanf("%d", (int*)&modifierTache->Priorite);
+
+            printf("Tache modifiee avec succes!\n");
+        } else {
+            printf("Aucune tache a modifier!\n");
+        }
+    } else {
+        printf("Aucune tache a modifier!\n");
+    }
+}
+
