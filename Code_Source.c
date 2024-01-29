@@ -25,9 +25,6 @@ typedef struct {
 Tache ListeTaches[MAX_TACHES];
 int countTaches = 0;
 
-
-
-
 void AjouterTache() {
     if (countTaches < MAX_TACHES) {
         Tache nouvelleTache;
@@ -47,8 +44,6 @@ void AjouterTache() {
         printf("La liste de taches est pleine. Impossible d'ajouter plus de taches.\n");
     }
 }
-
-
 
 void AfficherListeTaches() {
     int i;
@@ -80,10 +75,6 @@ void AfficherListeTaches() {
     }
 }
 
-
-
-
-
 void ModifierTache() {
     if (countTaches > 0) {
         int numeroTache;
@@ -110,10 +101,6 @@ void ModifierTache() {
     }
 }
 
-
-
-
-
 void SupprimerTache() {
     if (countTaches > 0) {
         int i;
@@ -135,9 +122,6 @@ void SupprimerTache() {
         printf("Aucune tache a supprimer!\n");
     }
 }
-
-
-
 
 void TriCroissante() {
     int i, j;
@@ -162,11 +146,6 @@ void TriCroissante() {
     }
 }
 
-
-
-
-
-
 void TriDecroissante() {
     int i, j;
     if (countTaches > 0) {
@@ -189,11 +168,6 @@ void TriDecroissante() {
         printf("Aucune tache a ordonner!\n");
     }
 }
-
-
-
-
-
 
 void FiltrerParPriorite(PrioriteEnum priorite) {
     int i;
@@ -231,10 +205,56 @@ void FiltrerParPriorite(PrioriteEnum priorite) {
     }
 }
 
+int main() {
+    int choix;
 
+    do {
+        printf("\nMenu:\n");
+        printf("1. Ajouter une tache\n");
+        printf("2. Afficher la liste des taches\n");
+        printf("3. Modifier une tache\n");
+        printf("4. Supprimer une tache\n");
+        printf("5. Trie les taches par date croissante\n");
+        printf("6. Trie les taches par date decroissante\n");
+        printf("7. Filtrer par priorite\n");
+        printf("0. Quitter\n");
 
+        printf("Choix : ");
+        scanf("%d", &choix);
 
+        switch (choix) {
+            case 1:
+                AjouterTache();
+                break;
+            case 2:
+                AfficherListeTaches();
+                break;
+            case 3:
+                ModifierTache();
+                break;
+            case 4:
+                SupprimerTache();
+                break;
+            case 5:
+                TriCroissante();
+                break;
+            case 6:
+                TriDecroissante();
+                break;
+            case 7: {
+                int priorite;
+                printf("Entrez la priorite (0: Faible, 1: Normale, 2: Importante, 3: TresImportante) : ");
+                scanf("%d", (int*)&priorite);
+                FiltrerParPriorite((PrioriteEnum)priorite);
+            } break;
+            case 0:
+                printf("Programme termine!\n");
+                break;
+            default:
+                printf("Choix invalide. Veuillez entrer un nombre entre 0 et 8.\n");
+        }
+    } while (choix != 0);
 
-
-
+    return 0;
+}
 
