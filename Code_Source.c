@@ -47,7 +47,7 @@ void AjouterTache() {
 
 void AfficherListeTaches() {
     int i;
-	if(countTaches < 0){
+	if(countTaches > 0){
     printf("Liste des taches :\n");
     for (i = 0; i < countTaches; ++i) {
         printf("Tache %d :\n", i + 1);
@@ -209,6 +209,54 @@ void FiltrerParPriorite(PrioriteEnum priorite) {
     }
 }
 
+void FiltrerParDate() {
+    date dateFiltre;
+    printf("Entrez la date de filtre (Format: jour-mois-annee) : ");
+    scanf("%d-%d-%d", &dateFiltre.jours, &dateFiltre.mois, &dateFiltre.annee);
+
+    int i;
+    int count = 0;
+
+    printf("Taches avec la date %d-%d-%d :\n", dateFiltre.jours, dateFiltre.mois, dateFiltre.annee);
+
+    for (i = 0; i < countTaches; ++i) {
+        if (ListeTaches[i].Date.jours == dateFiltre.jours &&
+            ListeTaches[i].Date.mois == dateFiltre.mois &&
+            ListeTaches[i].Date.annee == dateFiltre.annee) {
+            count = 1;
+
+            printf("Tache %d :\n", i + 1);
+            printf("Description : %s\n", ListeTaches[i].Description);
+            printf("Date : %d-%d-%d\n", ListeTaches[i].Date.jours, ListeTaches[i].Date.mois, ListeTaches[i].Date.annee);
+
+            switch (ListeTaches[i].Priorite) {
+                case Faible:
+                    printf("Priorite : Faible\n");
+                    break;
+                case Normale:
+                    printf("Priorite : Normale\n");
+                    break;
+                case Importante:
+                    printf("Priorite : Importante\n");
+                    break;
+                case TresImportante:
+                    printf("Priorite : Tres Importante\n");
+                    break;
+                default:
+                    printf("Priorite inconnue\n");
+            }
+
+            printf("\n");
+        }
+    }
+
+    if (!count) {
+        printf("Aucune tache trouvee pour la date specifiee.\n");
+    }
+}
+
+
+
 int main() {
     int choix;
 
@@ -221,6 +269,7 @@ int main() {
         printf("5. Trie les taches par date croissante\n");
         printf("6. Trie les taches par date decroissante\n");
         printf("7. Filtrer par priorite\n");
+        printf("8. Filtrer par la date\n");
         printf("0. Quitter\n");
 
         printf("Choix : ");
@@ -251,6 +300,8 @@ int main() {
                 scanf("%d", (int*)&priorite);
                 FiltrerParPriorite((PrioriteEnum)priorite);
             } break;
+            case 8:
+            	FiltrerParDate();
             case 0:
                 printf("Programme termine!\n");
                 break;
