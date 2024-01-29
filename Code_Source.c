@@ -25,6 +25,9 @@ typedef struct {
 Tache ListeTaches[MAX_TACHES];
 int countTaches = 0;
 
+
+
+
 void AjouterTache() {
     if (countTaches < MAX_TACHES) {
         Tache nouvelleTache;
@@ -44,3 +47,36 @@ void AjouterTache() {
         printf("La liste de taches est pleine. Impossible d'ajouter plus de taches.\n");
     }
 }
+
+
+
+void AfficherListeTaches() {
+    int i;
+
+    printf("Liste des taches :\n");
+    for (i = 0; i < countTaches; ++i) {
+        printf("Tache %d :\n", i + 1);
+        printf("Description : %s\n", ListeTaches[i].Description);
+        printf("Date : %d-%d-%d\n", ListeTaches[i].Date.jours, ListeTaches[i].Date.mois, ListeTaches[i].Date.annee);
+
+       
+        switch (ListeTaches[i].Priorite) {
+            case Faible:
+                printf("Priorite : Faible\n");
+                break;
+            case Normale:
+                printf("Priorite : Normale\n");
+                break;
+            case Importante:
+                printf("Priorite : Importante\n");
+                break;
+            case TresImportante:
+                printf("Priorite : TresImportante\n");
+                break;
+            default:
+                printf("Priorite inconnue\n");
+        }
+        printf("\n");
+    }
+}
+
