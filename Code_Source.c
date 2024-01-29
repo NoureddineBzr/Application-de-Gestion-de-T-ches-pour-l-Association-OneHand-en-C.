@@ -47,7 +47,7 @@ void AjouterTache() {
 
 void AfficherListeTaches() {
     int i;
-
+	if(countTaches < 0){
     printf("Liste des taches :\n");
     for (i = 0; i < countTaches; ++i) {
         printf("Tache %d :\n", i + 1);
@@ -73,6 +73,10 @@ void AfficherListeTaches() {
         }
         printf("\n");
     }
+    }else{
+    	printf("Aucune tache a afficher!\n");
+	 
+}
 }
 
 void ModifierTache() {
