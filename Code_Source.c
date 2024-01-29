@@ -195,5 +195,46 @@ void TriDecroissante() {
 
 
 
+void FiltrerParPriorite(PrioriteEnum priorite) {
+    int i;
+    if (countTaches > 0) {
+        printf("Taches avec priorite %d :\n", priorite);
+        for (i = 0; i < countTaches; ++i) {
+            if (ListeTaches[i].Priorite == priorite) {
+                printf("Tache %d :\n", i + 1);
+                printf("Description : %s\n", ListeTaches[i].Description);
+                printf("Date : %d-%d-%d\n", ListeTaches[i].Date.jours, ListeTaches[i].Date.mois, ListeTaches[i].Date.annee);
+
+             
+                switch (ListeTaches[i].Priorite) {
+                    case Faible:
+                        printf("Priorite : Faible\n");
+                        break;
+                    case Normale:
+                        printf("Priorite : Normale\n");
+                        break;
+                    case Importante:
+                        printf("Priorite : Importante\n");
+                        break;
+                    case TresImportante:
+                        printf("Priorite : Tres Importante\n");
+                        break;
+                    default:
+                        printf("Priorite inconnue\n");
+                }
+
+                printf("\n");
+            }
+        }
+    } else {
+        printf("Aucune tache a afficher!\n");
+    }
+}
+
+
+
+
+
+
 
 
