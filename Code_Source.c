@@ -136,3 +136,29 @@ void SupprimerTache() {
     }
 }
 
+
+
+
+void TriCroissante() {
+    int i, j;
+    if (countTaches > 0) {
+        for (i = 0; i < countTaches - 1; ++i) {
+            for (j = i + 1; j < countTaches; ++j) {
+                if (ListeTaches[i].Date.annee > ListeTaches[j].Date.annee ||
+                    (ListeTaches[i].Date.annee == ListeTaches[j].Date.annee &&
+                     (ListeTaches[i].Date.mois > ListeTaches[j].Date.mois ||
+                      (ListeTaches[i].Date.mois == ListeTaches[j].Date.mois &&
+                       ListeTaches[i].Date.jours > ListeTaches[j].Date.jours)))) {
+                    Tache temp = ListeTaches[i];
+                    ListeTaches[i] = ListeTaches[j];
+                    ListeTaches[j] = temp;
+                }
+            }
+        }
+
+        printf("Taches ordonnees par date croissante!\n");
+    } else {
+        printf("Aucune tache a ordonner!\n");
+    }
+}
+
