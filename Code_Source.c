@@ -49,7 +49,7 @@ void AfficherListeTaches() {
     int i;
 	if(countTaches > 0){
     printf("Liste des taches :\n");
-    for (i = 0; i < countTaches; ++i) {
+    for (i = 0; i < countTaches; i++) {
         printf("Tache %d :\n", i + 1);
         printf("Description : %s\n", ListeTaches[i].Description);
         printf("Date : %d-%d-%d\n", ListeTaches[i].Date.jours, ListeTaches[i].Date.mois, ListeTaches[i].Date.annee);
@@ -113,7 +113,7 @@ void SupprimerTache() {
         scanf("%d", &numeroTache);
 
         if (numeroTache > 0 && numeroTache <= countTaches) {
-            for (i = numeroTache - 1; i < countTaches - 1; ++i) {
+            for (i = numeroTache - 1; i < countTaches - 1; i++) {
                 ListeTaches[i] = ListeTaches[i + 1];
             }
 
@@ -130,8 +130,8 @@ void SupprimerTache() {
 void TriCroissante() {
     int i, j;
     if (countTaches > 0) {
-        for (i = 0; i < countTaches - 1; ++i) {
-            for (j = i + 1; j < countTaches; ++j) {
+        for (i = 0; i < countTaches - 1; i++) {
+            for (j = i + 1; j < countTaches; j++) {
                 if (ListeTaches[i].Date.annee > ListeTaches[j].Date.annee ||
                     (ListeTaches[i].Date.annee == ListeTaches[j].Date.annee &&
                      (ListeTaches[i].Date.mois > ListeTaches[j].Date.mois ||
@@ -153,8 +153,8 @@ void TriCroissante() {
 void TriDecroissante() {
     int i, j;
     if (countTaches > 0) {
-        for (i = 0; i < countTaches - 1; ++i) {
-            for (j = i + 1; j < countTaches; ++j) {
+        for (i = 0; i < countTaches - 1; i++) {
+            for (j = i + 1; j < countTaches; j++) {
                 if (ListeTaches[i].Date.annee < ListeTaches[j].Date.annee ||
                     (ListeTaches[i].Date.annee == ListeTaches[j].Date.annee &&
                      (ListeTaches[i].Date.mois < ListeTaches[j].Date.mois ||
@@ -177,7 +177,7 @@ void FiltrerParPriorite(PrioriteEnum priorite) {
     int i;
     if (countTaches > 0) {
         printf("Taches avec priorite %d :\n", priorite);
-        for (i = 0; i < countTaches; ++i) {
+        for (i = 0; i < countTaches; i++) {
             if (ListeTaches[i].Priorite == priorite) {
                 printf("Tache %d :\n", i + 1);
                 printf("Description : %s\n", ListeTaches[i].Description);
@@ -219,7 +219,7 @@ void FiltrerParDate() {
 
     printf("Taches avec la date %d-%d-%d :\n", dateFiltre.jours, dateFiltre.mois, dateFiltre.annee);
 
-    for (i = 0; i < countTaches; ++i) {
+    for (i = 0; i < countTaches; i++) {
         if (ListeTaches[i].Date.jours == dateFiltre.jours &&
             ListeTaches[i].Date.mois == dateFiltre.mois &&
             ListeTaches[i].Date.annee == dateFiltre.annee) {
