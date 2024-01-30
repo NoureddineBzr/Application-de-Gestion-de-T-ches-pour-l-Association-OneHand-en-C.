@@ -113,7 +113,7 @@ void SupprimerTache() {
         scanf("%d", &numeroTache);
 
         if (numeroTache > 0 && numeroTache <= countTaches) {
-            for (i = numeroTache - 1; i < countTaches - 1; i++) {
+            for (i = numeroTache - 1; i < countTaches ; i++) {
                 ListeTaches[i] = ListeTaches[i + 1];
             }
 
