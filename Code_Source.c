@@ -130,7 +130,7 @@ void SupprimerTache() {
 void TriCroissante() {
     int i, j;
     if (countTaches > 0) {
-        for (i = 0; i < countTaches - 1; i++) {
+        for (i = 0; i < countTaches ; i++) {
             for (j = i + 1; j < countTaches; j++) {
                 if (ListeTaches[i].Date.annee > ListeTaches[j].Date.annee ||
                     (ListeTaches[i].Date.annee == ListeTaches[j].Date.annee &&
@@ -153,7 +153,7 @@ void TriCroissante() {
 void TriDecroissante() {
     int i, j;
     if (countTaches > 0) {
-        for (i = 0; i < countTaches - 1; i++) {
+        for (i = 0; i < countTaches ; i++) {
             for (j = i + 1; j < countTaches; j++) {
                 if (ListeTaches[i].Date.annee < ListeTaches[j].Date.annee ||
                     (ListeTaches[i].Date.annee == ListeTaches[j].Date.annee &&
